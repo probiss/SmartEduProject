@@ -11,6 +11,10 @@ const CategorySchema = new Schema({
   slug: {
     type:String,
     unique: true
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 
