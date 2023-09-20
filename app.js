@@ -12,7 +12,7 @@ const methodOverride = require('method-override');
 const app = express();
 
 //Database Connection
-mongoose.connect('mongodb://127.0.0.1:27017/eduSmart-db', {
+mongoose.connect('mongodb+srv://bulutedu:edusmart2023@clusteredu.uctjl7f.mongodb.net/smartedu-db?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -38,7 +38,7 @@ app.use(
     secret: 'my_little_kitten',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/eduSmart-db' }),
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://bulutedu:edusmart2023@clusteredu.uctjl7f.mongodb.net/smartedu-db?retryWrites=true&w=majority' }),
   })
   );
   app.use(flash());
@@ -60,7 +60,7 @@ app.use('/categories', categoryRoute);
 app.use('/users', userRoute);
 
 
-const PORT = process.env.PORT ||3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
