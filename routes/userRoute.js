@@ -2,8 +2,8 @@ const express = require('express');
 
 const authController = require('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
-const { body } = require('express-validator');
 const User = require('../models/User');
+const { body } = require('express-validator');
 
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router.route('/signup').post(
         body('password').not().isEmpty().withMessage('Please Enter A Password'),
     ],
     
-    authController.createUser); // http://localhost:3000/users/signup
+    authController.createUser);
 
 router.route('/login').post(authController.loginUser);
 router.route('/logout').get(authController.logoutUser);
