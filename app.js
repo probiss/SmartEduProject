@@ -8,11 +8,12 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
-
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
 
 //Database Connection
-mongoose.connect('mongodb+srv://bulutedu:edusmart2023@clusteredu.uctjl7f.mongodb.net/smartedu-db?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -38,7 +39,7 @@ app.use(
     secret: 'my_little_kitten',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb+srv://bulutedu:edusmart2023@clusteredu.uctjl7f.mongodb.net/smartedu-db?retryWrites=true&w=majority' }),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
   })
   );
   app.use(flash());
